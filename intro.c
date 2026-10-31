@@ -68,3 +68,38 @@ printf("Size of long long int: %zu bytes\n", sizeof(long long int));
 printf("Size of unsigned long long int: %zu bytes\n", sizeof(unsigned long long int));
 printf("Size of long double: %zu bytes\n", sizeof(long double));
 */
+
+// Overflow behavior!!
+#include <stdio.h>
+#include <limits.h>
+int main(void) {
+    unsigned char level = 250;
+    for (int i = 0; i < 8; i++) {
+        level++;
+    printf("level: %u\n", level);
+    printf("max value of unsigned char: %u\n", UCHAR_MAX);
+    return 0;
+
+    }
+}
+// it will print 2 as the answer because the maximum value of an unsigned char is 255. When we increment the value of level from 250 to 255, it reaches its maximum value. 
+// When we increment it again, it wraps around to 0, and then continues to increment until it reaches 2 after 8 increments.
+
+typedef struct {
+    int rollno;
+    char name[50];
+    int age;
+} Student;
+
+int main() {
+    Student s1;
+    s1.rollno = 101;
+    struct(s1.name, "John Doe");
+    s1.age = 20;
+
+    printf("Roll No: %d\n", s1.rollno);
+    printf("Name: %s\n", s1.name);
+    printf("Age: %d\n", s1.age);
+
+    return 0;
+}
